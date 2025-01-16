@@ -1,6 +1,12 @@
-# Repository Description
+# Artifact of the paper "Accounting for Missing Events in Statistical Information Leakage Estimation"
 
-This replication repository contains the data, result, and scripts for the paper "Accounting for Missing Events in Statistical Information Leakage Estimation" accepted at the 47th International Conference on Software Engineering (ICSE 2025).
+## Repository Description (Purpose)
+
+This replication repository contains the data, result, and scripts for the paper "Accounting for Missing Events in Statistical Information Leakage Estimation" accepted at the 47th International Conference on Software Engineering (ICSE 2025). The artifact is intended to reproduce the results in the paper and to provide the estimation results for the readers to analyze the information leakage of their own systems. The authors of the artifact claim 'Available,' 'Functional,' and 'Reusable' badges as the artifact is available for download, the scripts are functional, and well-documented for reuse.
+
+## Provenance
+
+The preprint of the paper is available at [Link](https://nimgnoeseel.github.io/resources/paper/leak.pdf). The GitHub repository of the artifact is publicly available at [Link](https://github.com/niMgnoeSeeL/ChaoMI).
 
 ## Requirements
 
