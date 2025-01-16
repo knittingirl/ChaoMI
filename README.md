@@ -1,6 +1,6 @@
 # Repository Description
 
-This replication repository contains the data, result, and scripts for the paper "Accounting for Missing Events in Statistical Information Leakage Estimation" submitted to ISSTA 2025.
+This replication repository contains the data, result, and scripts for the paper "Accounting for Missing Events in Statistical Information Leakage Estimation" accepted at the 47th International Conference on Software Engineering (ICSE 2025).
 
 ## Requirements
 
@@ -26,7 +26,10 @@ $ tree .
 ├── notebook                        # Directory containing the Jupyter notebooks for the paper
 │   ├── combine-hyleak-result.ipynb
 │   ├── RQ1-RQ2(partial).ipynb      # Notebook for RQ1 and RQ2
+│   ├── RQ1-RQ2(partial)-normalized.ipynb # Notebook for RQ1 and RQ2 with normalized results
+│   │                                     # (the results are normalized by the log of the secret domain size (i.e., the maximum MI))
 │   ├── RQ2.ipynb                   # Notebook for RQ2
+|   ├── RQ2-normalized.ipynb        # Notebook for RQ2 with normalized results
 │   ├── RQ3.ipynb                   # Notebook for RQ3
 │   ├── LocPrivacyProbgen.ipynb     # Notebook for generating the joint distribution of LPPMs
 │   ├── RQ4-ePassport.ipynb         # Notebook for RQ4 on ePassport experiment
