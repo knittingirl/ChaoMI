@@ -43,7 +43,7 @@ def run_experiment(args: Tuple[str, int]) -> None:
         f"Running experiment on '{subject_filename}', output domain size {output_domain_size}"
     )
 
-    s_xy_path = os.path.join("/ChaoMI/data1M/", f"{subject_filename}-s-xy.csv")
+    s_xy_path = os.path.join("data1M/", f"{subject_filename}-s-xy.csv")
     s_xy = np.loadtxt(s_xy_path, delimiter=",", dtype=int)
     assert s_xy.shape == (input_domain_size, output_domain_size)
 

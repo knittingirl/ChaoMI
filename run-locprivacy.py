@@ -128,7 +128,9 @@ def sampling(params):
     prob_df, num_samples, run = params
     random_seed = int.from_bytes(os.urandom(4), "big")
     np.random.seed(random_seed)  # use os.urandom(4) to generate a random seed
-    samples = np.random.choice(prob_df.index, num_samples, p=prob_df.prob)
+    # samples = np.random.choice(prob_df.index, num_samples, p=prob_df.prob)
+    # np.random.choice takes too long
+    samples = prob_df.sample(n=num_samples, replace=True, weights="prob").index
     samples = pd.DataFrame(
         np.array(list(samples)),
         columns=["lati_sec", "long_sec", "lati_obs", "long_obs"],
