@@ -25,7 +25,6 @@ $ tree .
 ├── result/                         # Directory containing the results of estimation for RQ1-3
 ├── figures/                        # Directory containing the figures for the paper
 ├── notebook                        # Directory containing the Jupyter notebooks for the paper
-│   ├── combine-hyleak-result.ipynb
 │   ├── RQ1-RQ2(partial).ipynb      # Notebook for RQ1 and RQ2
 │   ├── RQ1-RQ2(partial)-normalized.ipynb # Notebook for RQ1 and RQ2 with normalized results
 │   │                                     # (the results are normalized by the log of the secret domain size (i.e., the maximum MI))
