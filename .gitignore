@@ -7,3 +7,16 @@ exclude/
 data-LocPrivacy/Gowalla_totalCheckins.txt
 data-LocPrivacy/prob_df-Opt.csv
 data-LocPrivacy/prob_df-PG2.csv
+
+# latex
+*.aux
+*.log
+*.pdf
+*.synctex.gz
+*.toc
+*.out
+*.fdb_latexmk
+*.fls
+*.blg
+*.bbl
+*.synctex.gz

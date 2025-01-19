@@ -1,0 +1,223 @@
+\documentclass{article}
+
+\usepackage{fullpage}
+
+\usepackage[utf8]{inputenc} % Allows UTF-8 encoding
+\usepackage[T1]{fontenc}    % Ensures proper output of special characters
+\usepackage[english]{babel} % Sets the document language
+
+% Package for URL and hyperlinks
+\usepackage{hyperref} % For clickable links
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Document},
+    pdfpagemode=FullScreen,
+}
+
+\usepackage{dirtree}
+
+% Page layout
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+% Additional utilities
+\usepackage{parskip} % Adds space between paragraphs
+
+% Package for code listings
+\usepackage{listings}
+\usepackage{xcolor} % For syntax highlighting in listings
+
+% Define listing styles
+\lstset{
+    basicstyle=\ttfamily\small, % Monospaced font for listings
+    breaklines=true,            % Automatic line breaking
+    frame=single,               % Adds a frame around the code
+    numbers=left,               % Line numbers on the left
+    numberstyle=\tiny\color{gray}, % Style for line numbers
+    keywordstyle=\color{blue},      % Style for keywords
+    commentstyle=\color{green!50!black}, % Style for comments
+    stringstyle=\color{red},    % Style for strings
+    tabsize=4,                  % Tab width
+    showstringspaces=false,     % Don't show spaces in strings
+    literate={├}{|}1 {─}{-}1 {└}{+}1, % For tree-like structures
+}
+
+
+\title{Artifact of the paper ``Accounting for Missing Events in Statistical Information Leakage Estimation''}
+
+\author{Seongmin Lee, Shreyas Minocha, Marcel B{\"o}hme}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Repository Description (Purpose)}
+
+This replication repository contains the data, result, and scripts for the paper "Accounting for Missing Events in Statistical Information Leakage Estimation" accepted at the 47th International Conference on Software Engineering (ICSE 2025). The artifact is intended to reproduce the results in the paper and to provide the estimation results for the readers to analyze the information leakage of their own systems.
+
+\subsection{Provenance}
+
+% The preprint of the paper is available at [Link](https://nimgnoeseel.github.io/resources/paper/leak.pdf). The permanent link to the artifact is [Zenodo Link](https://zenodo.org/records/14673586).
+
+The preprint of the paper is available at \url{https://nimgnoeseel.github.io/resources/paper/leak.pdf}. The permanent link to the artifact is \url{https://zenodo.org/records/14673586}.
+
+\subsection{Requirements}
+
+% running your artifact requires any 
+% specific Operating Systems or other, unusual environments
+The artifact requires no specific operating system or unusual environments. The scripts are written in Python 3 and the following libraries are required to run the scripts: \texttt{numpy}, \texttt{pandas}, \texttt{scipy}, \texttt{matplotlib}, \texttt{seaborn}, and \texttt{jupyter}.
+
+\subsection{Badges Claimed}
+
+The authors of the artifact claim 'Available,' 'Functional,' and 'Reusable' badges as the artifact is available for download, the scripts are functional, and well-documented for reuse. The use of the artifact requires not more than a basic understanding of Python with Jupyter notebook and usage of the command line interface.
+
+\section{Repository Contents}
+
+The repository contains the following files and directories:
+{\footnotesize
+\dirtree{%
+.1 .
+.2 README.md \DTcomment{The README file}.
+.2 HyLeak-data/ \DTcomment{Subject programs (HyLeak IR) and results of HyLeak for RQ1-3}.
+.2 data1M/ \DTcomment{1M samples for ground truth of the subject programs}.
+.2 data-epassport/ \DTcomment{Data for the ePassport experiment (RQ4)}.
+.2 data-LocPrivacy/ \DTcomment{Data for location privacy experiment (RQ4)}.
+.2 result/ \DTcomment{Results of estimation for RQ1-3}.
+.2 figures/ \DTcomment{Figures for the paper}.
+.2 notebook/.
+.3 RQ1-RQ2(partial).ipynb \DTcomment{Notebook for RQ1 and RQ2}.
+.3 RQ1-RQ2(partial)-normalized.ipynb \DTcomment{Notebook with normalized results}.
+.3 RQ2.ipynb \DTcomment{Notebook for RQ2}.
+.3 RQ2-normalized.ipynb \DTcomment{Normalized results for RQ2}.
+.3 RQ3.ipynb \DTcomment{Notebook for RQ3}.
+.3 LocPrivacyProbgen.ipynb \DTcomment{Joint distribution generation for LPPMs}.
+.3 RQ4-ePassport.ipynb \DTcomment{ePassport experiment for RQ4}.
+.3 RQ4-figgen.ipynb \DTcomment{Figure generation for RQ4}.
+.2 Dockerfile \DTcomment{Build replication environment}.
+.2 chao.py.
+.2 empirical.py.
+.2 estimate.py.
+.2 experiment.py.
+.2 ground\_truth.py.
+.2 lychee.py.
+.2 miller.py.
+.2 util.py.
+.2 run-para.py \DTcomment{Script for RQ1-3 experiments}.
+.2 combine-hyleak-result.py \DTcomment{Combine HyLeak results}.
+.2 run-locprivacy.py \DTcomment{Run experiments for RQ4 (location privacy)}.
+}}
+
+\section{Instructions}
+
+\subsection{Preparation}
+
+Download the repository and install Python 3 with the required packages.
+
+\subsubsection{(Optional) Build Docker Image}
+
+If you want to run the experiments in a Docker container, you can build the Docker image with the following command:
+
+\begin{lstlisting}[language=bash]
+$ docker build -t icse2025-replication .
+\end{lstlisting}
+
+Then, you can run the container with the following command with the port 8888 exposed:
+
+\begin{lstlisting}[language=bash]
+$ docker run -it -p 8888:8888 icse2025-replication
+\end{lstlisting}
+
+Run the Jupyter notebook server in the container with the following command:
+
+\begin{lstlisting}[language=bash]
+$ jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+\end{lstlisting}
+
+Then, you can access the Jupyter notebook server at the URL shown in the terminal:
+
+\begin{verbatim}
+    Or copy and paste one of these URLs:
+        http://127.0.0.1:8888/tree?token=xxx
+\end{verbatim}
+
+\subsection{Analysis and Visualization: Reproduce the tables and figures in the paper}
+
+The estimation results for RQ1-3 and RQ4 are already provided in the \texttt{result/}, \texttt{data-LocPrivacy/}, and \texttt{data-epassport/} directories. Use the notebooks in the \texttt{notebook/} directory to analyze the results and generate the figures.
+
+\begin{itemize}
+    \item \textbf{RQ1 and RQ2}: Run the notebook \texttt{RQ1-RQ2(partial).ipynb} and \texttt{RQ2.ipynb} in the \texttt{notebook/} directory.
+    \item \textbf{RQ3}: Run the notebook \texttt{RQ3.ipynb} in the \texttt{notebook/} directory.
+    \item \textbf{RQ4}: Run the notebook \texttt{RQ4-figgen.ipynb} and \texttt{RQ4-ePassport.ipynb} in the \texttt{notebook/} directory.
+\end{itemize}
+
+\subsection{Generate the estimation results for RQ1-3 and RQ4}
+
+\subsubsection{Run the experiments for RQ1-3}
+
+First, set the parameters:
+
+\begin{itemize}
+    \item The number of repetitions for each configuration, i.e., (subject, sample ratio) pair in the script \texttt{run-para.py} (\texttt{NUM\_RUNS\_PER\_NUM\_SAMPLES}); 30 is the number we used in the paper.
+    \item The number of repetitions for our proposed method with the same sample in the script \texttt{run-para.py} (\texttt{NUM\_RUNS\_PER\_NUM\_SAMPLES}); 30 is the number we used in the paper.
+    \item The number of cores for parallel computation in the script \texttt{experiment.py} (\texttt{MAX\_CORES}).
+\end{itemize}
+
+Then, run the script with the following command with the data in the \texttt{data1M/} directory:
+
+\begin{lstlisting}[language=bash]
+$ python3 run-para.py
+\end{lstlisting}
+
+The script will generate the results in the \texttt{result/} directory.
+
+\paragraph{Combine the results of HyLeak}
+
+Run the script \texttt{combine-hyleak-result.py} with the following command:
+
+\begin{lstlisting}[language=bash]
+$ python3 combine-hyleak-result.py
+\end{lstlisting}
+
+\subsubsection{Run the experiments for RQ4}
+
+\paragraph{Location Privacy}
+
+\texttt{prob\_df-Opt.csv} and \texttt{prob\_df-PG2.csv} in the \texttt{data-LocPrivacy/} directory are the pre-generated joint probability distribution of LPPMs, which are used for the location privacy experiment. They are generated by the notebook \texttt{LocPrivacyProbgen.ipynb} in the \texttt{notebook/} directory with the data \texttt{data-LocPrivacy/Gowalla\_totalCheckins.txt}. Those files are already provided in the repository if you download the repository from Zenodo. If you clone the repository from GitHub, please go to Zenodo to download the files.
+
+To estimate the MI, first, set the number of cores for parallel computation in the script \texttt{run-locprivacy.py} (\texttt{MAX\_CORES}).
+
+Then, run the script with the following command:
+
+\begin{lstlisting}[language=bash]
+$ python3 run-locprivacy.py --subject {pg2,opt} --maxsample M --numruns N
+\end{lstlisting}
+
+where \texttt{M} is the maximum number of samples to use. The number of samples considered will be $400$ (the domain size of the secret location)$ \times 2^i$ for $i \in [0..]$ until the maximum number of samples is reached.
+
+For example, to run the experiments for the optimal mechanisms proposed by Oya et al. (Blahut-Arimoto method) with 1M samples and 30 runs (the experiment we conducted in the paper):
+
+\begin{lstlisting}[language=bash]
+$ python3 run-locprivacy.py --subject opt --maxsample 1000000 --numruns 30
+\end{lstlisting}
+
+The script will generate the results in the \texttt{data-LocPrivacy/} directory.
+
+\paragraph{ePassport Privacy}
+
+Run the notebook \texttt{RQ4-ePassport.ipynb} in the \texttt{notebook/} directory with the data \texttt{data-epassport/raw-time-data/*.csv}.
+
+The notebook will generate the results in the \texttt{data-epassport/estimate} directory.
+
+\section{License}
+
+The code in this repository is licensed under the MIT License.
+
+\section{Contact}
+
+If you have any questions or need help with the artifact, please contact Seongmin Lee at \href{mailto:seongmin.lee@mpi-sp.org}{seongmin.lee@mpi-sp.org}.
+
+\end{document}
