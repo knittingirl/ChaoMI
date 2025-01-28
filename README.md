@@ -65,13 +65,13 @@ Download the repository and install Python 3 with the required packages.
 If you want to run the experiments in a Docker container, you can build the Docker image with the following command:
 
 ```bash
-$ docker build -t icse2025-replication .
+$ docker build --network=host -t icse2025-replication .
 ```
 
 Then, you can run the container with the following command with the port 8888 exposed:
 
 ```bash
-$ docker run -it -p 8888:8888 icse2025-replication
+$ docker run -it --network=host -p 8888:8888 icse2025-replication
 ```
 
 Run the Jupyter notebook server in the container with the following command:
