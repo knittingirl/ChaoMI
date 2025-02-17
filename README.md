@@ -6,7 +6,7 @@ This replication repository contains the data, result, and scripts for the paper
 
 ## Provenance
 
-The preprint of the paper is available at [Link](https://nimgnoeseel.github.io/resources/paper/leak.pdf). The permanent link to the artifact is [Zenodo Link](https://zenodo.org/records/14673586).
+The preprint of the paper is available at [Link](https://nimgnoeseel.github.io/resources/paper/leak.pdf).
 
 ## Requirements
 
