@@ -13,7 +13,7 @@ from typing import Tuple
 from multiprocessing import Pool, cpu_count
 
 
-MAX_CORE = 100
+MAX_CORE = 5
 
 
 def parse_args(args):

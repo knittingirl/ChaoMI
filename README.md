@@ -58,20 +58,20 @@ $ tree .
 
 ### 0. Preparation
 
-Download the repository and install Python 3 with the required packages.
+Download the repository and install Python 3 with the required packages written in the \texttt{requirements.txt} file.
 
 #### (Optional) Build Docker Image
 
 If you want to run the experiments in a Docker container, you can build the Docker image with the following command:
 
 ```bash
-$ docker build --network=host -t icse2025-replication .
+$ docker build -t icse2025-replication .
 ```
 
 Then, you can run the container with the following command with the port 8888 exposed:
 
 ```bash
-$ docker run -it --network=host -p 8888:8888 icse2025-replication
+$ docker run -it -p 8888:8888 icse2025-replication
 ```
 
 Run the Jupyter notebook server in the container with the following command:
@@ -86,16 +86,20 @@ Then, you can access the Jupyter notebook server at the URL shown in the termina
         http://127.0.0.1:8888/tree?token=xxx
 ```
 
+If you face `*.ubuntu.com host inaccessible` error, one possible solution is to add `--network=host` option to the `docker build` and `docker run` commands.
+
+
 ### 1. Analysis and Visualization: Reproduce the tables and figures in the paper
 
-The estimation results for RQ1-3 and RQ4 are already provided in the `result/`, `data-LocPrivacy/`, and `data-epassport/` directories.
-Use the notebooks in the `notebook/` directory to analyze the results and generate the figures.
+The estimation results for RQ1-3 and RQ4 are already provided in the `result/`, `data-LocPrivacy/`, and `data-epassport/` directories. If you want to reproduce the tables and figures in the paper, follow the instructions in the next section. Here, we use the notebooks in the `notebook/` directory to analyze the results and generate the figures.
 
 - **RQ1 and RQ2**: Run the notebook `RQ1-RQ2(partial).ipynb` and `RQ2.ipynb` in the `notebook/` directory.
 - **RQ3**: Run the notebook `RQ3.ipynb` in the `notebook/` directory.
 - **RQ4**: Run the notebook `RQ4-figgen.ipynb` and `RQ4-ePassport.ipynb` in the `notebook/` directory.
 
 ### 2. Generate the estimation results for RQ1-3 and RQ4
+
+In this section, we provide the instructions to generate the estimation results for RQ1-3 and RQ4.
 
 #### 2-1. Run the experiments for RQ1-3
 
@@ -111,11 +115,11 @@ Then, run the script with the following command with the data in the `data1M/` d
 $ python3 run-para.py
 ```
 
-The script will generate the results in the `result/` directory.
+The script will generate the results in the `result/` directory. The time to run the script may take a long time (more than a day) depending on the computational environment: in our experiment, we used a server with 64-Core server with 256 GB of RAM to run the experiments with 30 repetitions for each configuration and 30 repetitions for our proposed method. But, the time mainly takes for the subject with a large domain size (e.g., 'reservior' and 'random walk'). In the script `run-para.py`, we suggest a smaller size experiment by commenting out the subject programs with a large domain size and less repetitions (5 $\times$ 5) with less cores (5). For a regular laptop, the expected time to run `run-para.py` is less than 30 minutes.
 
 ##### Combine the results of HyLeak
 
-Run the script `combine-hyleak-result.py` with the following command:
+Run the script `combine-hyleak-result.py` with the following command (less than a minute):
 
 ```bash
 $ python3 combine-hyleak-result.py
@@ -143,7 +147,7 @@ For example, to run the experiments for the optimal mechanisms proposed by Oya e
 $ python3 run-locprivacy.py --subject opt --maxsample 1000000 --numruns 30
 ```
 
-The script will generate the results in the `data-LocPrivacy/` directory.
+The script will generate the results in the `data-LocPrivacy/` directory. The expected time to run the script with 1M samples is less than two minutes given the same number of cores as the number of runs.
 
 - **ePassport Privacy**
 
@@ -152,3 +156,14 @@ Run the notebook `RQ4-ePassport.ipynb` in the `notebook/` directory with the dat
 The notebook will generate the results in the `data-epassport/estimate` directory.
 
 
+## Extending the Artifact
+
+The artifact can be easily extended to analyze the information leakage of other systems. All one needs to do is to provide the information of the ground truth joint probability distribution of the secret and the public variables. The way to provide the information is to generate a sample matrix of the joint distribution with a sufficient amount of samples (so that the empirical distribution is close to the true distribution), and save it as a CSV file under the `data1M/` directory. Please refer to the `data1M/` directory for the format of the CSV file. Finally, add the name of the new subject system with the domain size to the `run-para.py` script and run the script.
+
+## License
+
+The code in this repository is licensed under the MIT License.
+
+## Contact
+
+If you have any questions or need help with the artifact, please contact Seongmin Lee at \href{mailto:seongmin.lee@mpi-sp.org}{seongmin.lee@mpi-sp.org}.

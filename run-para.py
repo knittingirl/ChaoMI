@@ -6,8 +6,8 @@ from ground_truth import ground_truth
 
 import numpy as np
 
-NUM_RUNS_PER_NUM_SAMPLES = 30
-NUM_CHAO = 30
+NUM_RUNS_PER_NUM_SAMPLES = 5
+NUM_CHAO = 5
 
 # (name, input domain size, output domain size)
 hyleak_subjects = [
@@ -23,16 +23,16 @@ hyleak_subjects = [
     ("smartgrid-3", 27, 12),
     ("window-28", 28, 28),
     ("window-32", 32, 32),
-    ("reservoir-6", 64, 8),
-    ("smartgrid-4", 81, 12),
-    ("smartgrid-5", 243, 12),
-    ("reservoir-8", 256, 16),
-    ("random-walk-3", 500, 24),
-    ("random-walk-5", 500, 31),
-    ("random-walk-7", 500, 33),
-    ("random-walk-14", 500, 40),
-    ("reservoir-10", 1024, 32),
-    ("reservoir-12", 4096, 64),
+    # ("reservoir-6", 64, 8),
+    # ("smartgrid-4", 81, 12),
+    # ("smartgrid-5", 243, 12),
+    # ("reservoir-8", 256, 16),
+    # ("random-walk-3", 500, 24),
+    # ("random-walk-5", 500, 31),
+    # ("random-walk-7", 500, 33),
+    # ("random-walk-14", 500, 40),
+    # ("reservoir-10", 1024, 32),
+    # ("reservoir-12", 4096, 64),
 ]
 
 

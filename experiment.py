@@ -12,7 +12,7 @@ from util import (
 import time
 
 
-MAX_CORE = 100
+MAX_CORE = 5
 
 
 def determine_num_samples_per_x_values(output_domain_size: int) -> List[int]:
