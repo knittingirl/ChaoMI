@@ -18,5 +18,9 @@ COPY . /chaomi
 # Set the working directory to /chaomi
 WORKDIR /chaomi
 
+# Add helper script for Jupyter with correct URL display
+COPY start-jupyter.sh /usr/local/bin/start-jupyter.sh
+RUN chmod +x /usr/local/bin/start-jupyter.sh
+
 # Run bash
 CMD ["/bin/bash"]
