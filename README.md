@@ -56,13 +56,35 @@ $ tree .
 
 ## Usage
 
-### 0. Preparation
+### Preparation
 
-Download the repository and install Python 3 with the required packages written in the \texttt{requirements.txt} file.
+#### Installation on Bare-Metal 
+
+\#1: Download the repository and install Python 3 with the required packages written in the `requirements.txt` file. You can use the following command:
+```bash 
+$ pip3 install -r requirements.txt
+```
+If you are installing this in a more recent version of Linux, you may initially receive an `error: externally-managed-environment` message. In this case, you may either install the requirements within a python virtual environment, or you can override the warning at your own risk with the addition of the flag `--break-system-packages`.
+
+\#2: Run the jupyter notebook service with the command:
+
+```bash
+$ jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
+```
+\#3: The service will produce a message stating something along the lines of:
+
+```
+ To access the server, open this file in a browser:
+        file:///home/xxxxxx/.local/share/jupyter/runtime/jpserver-16695-open.html
+    Or copy and paste one of these URLs:
+        http://xxxxxx:8888/tree?token=xxxxx
+        http://127.0.0.1:8888/tree?token=xxxxxx
+```
+The final displayed link is the most reliable, copy-paste it into your browser of choice in order to view and run the jupyter notebooks.
 
 #### (Optional) Build Docker Image
 
-If you want to run the experiments in a Docker container, you can build the Docker image with the following command:
+If you want to run the experiments in a Docker container, start here and ignore the earlier set of instructions. You can build the Docker image with the following command:
 
 ```bash
 $ docker build -t icse2025-replication .
@@ -80,7 +102,7 @@ Run the Jupyter notebook server in the container with the following command:
 $ jupyter notebook --ip 0.0.0.0 --no-browser --allow-root
 ```
 
-Then, you can access the Jupyter notebook server at the URL shown in the terminal.
+Then, you can access the Jupyter notebook server at the URL shown in the terminal. This will most likely be the third option listed in the dropdown.
 ```
     Or copy and paste one of these URLs:
         http://127.0.0.1:8888/tree?token=xxx
@@ -166,4 +188,4 @@ The code in this repository is licensed under the MIT License.
 
 ## Contact
 
-If you have any questions or need help with the artifact, please contact Seongmin Lee at \href{mailto:seongmin.lee@mpi-sp.org}{seongmin.lee@mpi-sp.org}.
+If you have any questions or need help with the artifact, please contact Seongmin Lee at [seongmin.lee@mpi-sp.org](mailto:seongmin.lee@mpi-sp.org).

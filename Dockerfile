@@ -6,8 +6,11 @@ RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip
 
-# pip install numpy scipy pandas matplotlib seaborn jupyter
-RUN pip3 install numpy scipy pandas matplotlib seaborn jupyter
+# copy requirements.txt first for better layer caching
+COPY requirements.txt /tmp/requirements.txt
+
+# install pinned dependencies
+RUN pip3 install -r /tmp/requirements.txt
 
 # copy the current directory contents into the container at /chaomi
 COPY . /chaomi

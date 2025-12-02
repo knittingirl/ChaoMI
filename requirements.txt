@@ -1,8 +1,9 @@
 # python3 is required to run this artifact.
 # required python packages
-numpy
-scipy
-pandas
-matplotlib
-seaborn
-jupyter
+# Versions compatible with Python 3.10 (Ubuntu 22.04)
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.2.2
+matplotlib==3.9.0
+seaborn==0.13.2
+jupyter==1.0.0
